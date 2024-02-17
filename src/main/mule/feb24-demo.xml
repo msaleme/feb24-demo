@@ -26,6 +26,7 @@
     <flow name="name1" >
         <http:listener path="/api" config-ref="http_listner_config" doc:name="Listener" doc:id="alkbtb" />
         <set-payload value='"hello world!"' doc:name="Set payload" doc:id="bseadn" />
+        <logger doc:name="Logger" doc:id="ignhqs" />
         <ee:transform doc:name="Transform" doc:id="myueku" />
         <netsuite:add config-ref="name" doc:name="Add" doc:id="ikrpnn" />
         
