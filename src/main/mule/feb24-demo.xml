@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns:netsuite="http://www.mulesoft.org/schema/mule/netsuite"
+  xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+	http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+	http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+	http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule/netsuite/current/mule-netsuite.xsd">
+
+    
+  <http:listener-config name="http_listner_config" >
+      <http:listener-connection host="0.0.0.0" port="8081" />
+  </http:listener-config>
+ <salesforce:sfdc-config name="Salesforce_Config" >
+   <salesforce:basic-connection username="${salesforce.username}" password="${salesforce.password}" securityToken="${salesforce.token}"/>
+ </salesforce:sfdc-config>
+ 
+<netsuite:config name="name" >
+    
+</netsuite:config>
+
+    <flow name="name1" >
+        <http:listener path="/api" config-ref="http_listner_config" doc:name="Listener" doc:id="alkbtb" />
+        <set-payload value='"hello world!"' doc:name="Set payload" doc:id="bseadn" />
+        <ee:transform doc:name="Transform" doc:id="myueku" />
+        <netsuite:add config-ref="name" doc:name="Add" doc:id="ikrpnn" />
+        
+  
+    </flow>
+    <flow name="name2" >
+        <salesforce:query config-ref="config-ref" doc:name="Query" doc:id="yfcghp" >
+            
+        </salesforce:query>
+        
+    </flow>
+  
+</mule>
